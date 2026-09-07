@@ -1,9 +1,10 @@
-class Solution(object):
-    def groupAnagrams(self, strs):
-        d = {}
-        for word in strs:
-            key = ''.join(sorted(word))
-            if key not in d:
-                d[key] = []
-            d[key].append(word)
-        return list(d.values())
+from collections import defaultdict
+from typing import List
+
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        groups = defaultdict(list)
+        for s in strs:
+            key = ''.join(sorted(s))
+            groups[key].append(s)
+        return list(groups.values())
